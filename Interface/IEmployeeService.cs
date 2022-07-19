@@ -20,7 +20,7 @@ namespace ASPNetCoreWebAPiDemo.Interface
         /// </summary>
         /// <param name="empId"></param>
         /// <returns></returns>
-        Employees GetEmployeeDetailsById(int empId);
+        Employees GetEmployeeDetailsById(int employeeID);
 
         /// <summary>
         ///  add edit employee

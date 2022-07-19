@@ -55,12 +55,12 @@ namespace ASPNetCoreWebAPiDemo.Services
         /// </summary>
         /// <param name="empId"></param>
         /// <returns></returns>
-        public Employees GetEmployeeDetailsById(int empId)
+        public Employees GetEmployeeDetailsById(int employeeID)
         {
             Employees emp;
             try
             {
-                emp = _context.Find<Employees>(empId);
+                emp = _context.Find<Employees>(employeeID);
             }
             catch (Exception)
             {
@@ -98,7 +98,7 @@ namespace ASPNetCoreWebAPiDemo.Services
                 else
                 {
                     _context.Add<Employees>(employeeModel);
-                    model.Messsage = "Employee Inserted Successfully";
+                    model.Messsage = "Employee Inserted Successfully"; 
                 }
                 _context.SaveChanges();
                 model.IsSuccess = true;
@@ -112,7 +112,7 @@ namespace ASPNetCoreWebAPiDemo.Services
         }
 
 
-        //As you have seen in the above code, we take the employee model as a parameter.
+        //As you have seen in the above code, we take the employeeModel as a parameter.
         //Then we called our get details by id method to get details of an employee by id and store In temp variable.
 
         //Here if employee Id is coming with a model which means we have to update the employee

@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 
 namespace ASPNetCoreWebAPiDemo.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Employee")]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-
         //n the Constructor of our controller, we implement dependency injection for our service.
 
         IEmployeeService _employeeService;
@@ -21,20 +20,19 @@ namespace ASPNetCoreWebAPiDemo.Controllers
         {
             _employeeService = service;
         }
-
         //For this controller, we are using routing with action methods.
         //For example, if the user called Employee with Get method then it will call Get List Of All Employee Method
         //and if the user called Employee/{id} with Get then it will call Get Employee Details By Id Method
         //and If user called Employee with POST method then it will call Save Employee Method
         //and same as if the user called Employee with Delete method then it will call Delete Employee Method
-
         //*************************************Get List Of All Employee Method*********************
         /// <summary>
         /// get all employess
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        [Route("[action]")]
+        //[HttpGet]
+        [HttpGet("GetAllEmployees")]
+        //[Route("[action]")]
         public IActionResult GetAllEmployees()
         {
             try
@@ -52,19 +50,21 @@ namespace ASPNetCoreWebAPiDemo.Controllers
         //in the above method, we call a method from our service and assign it to the variable.
         //If the variable is not null then we return ok status with this variable, else we return not found.
 
+
         //*********************Get Employee Details By Id Method*************************
         /// <summary>
         /// get employee details by  
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="employeeID"></param>          //error 3
         /// <returns></returns>
+        /// 
         [HttpGet]
-        [Route("[action]/id")]
-        public IActionResult GetEmployeesById(int id)
+        [Route("[action]/id/{employeeID}")]
+        public IActionResult GetEmployeesById(int employeeID)
         {
             try
             {
-                var employees = _employeeService.GetEmployeeDetailsById(id);
+                var employees = _employeeService.GetEmployeeDetailsById(employeeID);
                 if (employees == null) return NotFound();
                 return Ok(employees);
             }
@@ -115,9 +115,5 @@ namespace ASPNetCoreWebAPiDemo.Controllers
                 return BadRequest();
             }
         }
-
-
-
-
     }
 }
