@@ -44,19 +44,19 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[5.0.1, )"
-            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.1, )"
+              "version": "[5.0.17, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
               "version": "[6.0.1, )"
+            },
+            "Oracle.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.21.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

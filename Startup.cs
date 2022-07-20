@@ -32,7 +32,14 @@ namespace ASPNetCoreWebAPiDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<EmpContext>(x => x.UseSqlServer(Configuration.GetConnectionString("ConStr")));
+            /* start */
+            //for ms sql connection
+            //services.AddDbContext<EmpContext>(x => x.UseSqlServer(Configuration.GetConnectionString("ConStr")));
+            /* End */
+            //User Id = EREMITNEW; Password = eremitnew; Data Source = 10.11.201.14:1525 / NSIDB; Persist Security Info = True; ";
+            //var connectionString = Configuration.GetSection("ConStr").Value;
+            //services.AddDbContext<EmpContext>(options => options.UseOracle(connectionString), ServiceLifetime.Transient);
+            services.AddDbContext<EmpContext>(options => options.UseOracle(Configuration.GetConnectionString("OracleDBConnection")));
             // to add the dependency for our class and interface.
             //This means when we call any method from this interface it will automatically call a method from the class.
             services.AddScoped<IEmployeeService, EmployeeService>();
